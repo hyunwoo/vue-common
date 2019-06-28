@@ -3,8 +3,7 @@ import { FirestoreCollection, FirestoreDocument, Storage } from '../../firebase'
 import MediaItem from './mediaItem';
 import uuid from 'uuid/v4';
 import _ from 'lodash';
-import { FileUtil } from '@/util';
-import { Log } from '@/common/util';
+import { File, Log } from '../../util';
 
 
 interface EmbedMediaItem {
@@ -157,7 +156,7 @@ export default class MediaLibrary extends Vue {
     // TODO
     // 왜 페이지가 이동하는가..?
     evt.preventDefault();
-    const files = FileUtil.getFilesFromEvent(evt);
+    const files = File.getFilesFromEvent(evt);
     console.log(files);
 
     evt.stopImmediatePropagation();
