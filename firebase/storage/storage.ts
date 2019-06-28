@@ -1,4 +1,4 @@
-import { storage } from './app';
+import { storage } from '../app';
 
 class Storage {
   private ref: firebase.storage.Reference;
@@ -7,7 +7,6 @@ class Storage {
   }
   public async uploadString(data: string, meta?: firebase.storage.UploadMetadata): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-
       this.ref
         .putString(data, undefined, meta)
         .then(() => resolve())
