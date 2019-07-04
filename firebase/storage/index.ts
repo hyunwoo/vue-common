@@ -1,6 +1,6 @@
 import Storage from './storage';
-import DatableStorage from './datableStorage';
+import DatableStorage, { BaseDatableStorage } from './datableStorage';
 
 export {
-  Storage, DatableStorage
+  Storage, DatableStorage, BaseDatableStorage
 };

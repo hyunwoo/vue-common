@@ -1,5 +1,5 @@
 
-export default abstract class Datable {
+export default abstract class BaseDatableStorage {
   private _location = '';
 
   constructor(location: string) {

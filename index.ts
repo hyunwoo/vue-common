@@ -19,14 +19,14 @@ export {
 // Firebase Wrapper
 import {
   FirestoreCollection, FirestoreDocument, FirestoreDocumentData,
-  Storage, DatableStorage,
+  Storage, DatableStorage, BaseDatableStorage,
   Auth,
   Performance,
 } from './firebase';
 import { SignInMethod } from './firebase/auth';
 export {
   FirestoreCollection, FirestoreDocument, FirestoreDocumentData,
-  Storage, DatableStorage,
+  Storage, DatableStorage, BaseDatableStorage,
   Auth,
   Performance,
   SignInMethod

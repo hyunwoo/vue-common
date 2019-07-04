@@ -1,4 +1,4 @@
-import Datable from './datable';
+import Datable from './baseDatableStorage';
 
 
 interface ArrayTest {

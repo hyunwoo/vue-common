@@ -1,11 +1,12 @@
 import { storage } from '../app';
-import Datable from './datable';
+import BaseDatableStorage from './baseDatableStorage';
 import Storage from './storage';
 import axios from 'axios';
 
-export default class DatableStorage<T extends Datable> {
+export { BaseDatableStorage };
+export default class DatableStorage<T extends BaseDatableStorage> {
 
-  public static async load<T extends Datable>(
+  public static async load<T extends BaseDatableStorage>(
     type: new (location: string) => T,
     location: string
   ): Promise<DatableStorage<T>> {
@@ -14,9 +15,9 @@ export default class DatableStorage<T extends Datable> {
     return object;
   }
 
-  public static create<T extends Datable>(
+  public static create<T extends BaseDatableStorage>(
     type: new (location: string) => T,
-    location: string, data?: T
+    location: string, data?: Partial<T>
   ): DatableStorage<T> {
     return new DatableStorage<T>(type, location, data);
   }
@@ -27,10 +28,11 @@ export default class DatableStorage<T extends Datable> {
   private _storage: Storage;
   private _data: T;
 
-  constructor(type: new (location: string) => T, location: string, data?: T) {
+  constructor(type: new (location: string) => T, location: string, data?: Partial<T>) {
     this._storage = new Storage(location);
     if (data !== undefined) {
-      this._data = data;
+      this._data = new type(location);
+      this._data.assign(data);
     } else {
       this._data = new type(location);
     }
