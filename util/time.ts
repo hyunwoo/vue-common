@@ -15,5 +15,4 @@ export default {
   dateFormat(date: string | number, format: string) {
     return moment(date).format(format);
   }
-
 };
