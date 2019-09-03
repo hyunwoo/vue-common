@@ -2,19 +2,19 @@ import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import _ from 'lodash';
 
-
-
 export interface AlertOption {
-  title: string;
+  title?: string;
   message: string;
   positive: string;
   negative?: string;
+  color?: string;
   positiveAction?: () => any;
   negativeAction?: () => any;
 }
 
 @Component({})
 export default class Alert extends Vue {
+  public lodash = _;
   public name: string = 'alert-window';
   public use: boolean = false;
   public message: string = '안녕';
@@ -24,16 +24,20 @@ export default class Alert extends Vue {
     message: '테스트',
     positive: '확인',
     negative: '취소',
+    color: '#00b0ff',
     positiveAction: () => {
       // Empty
     },
     negativeAction: () => {
       // Empty
     }
-
   };
-  public resolve() { /** Empty */ }
-  public reject() { /** Empty */ }
+  public resolve() {
+    /** Empty */
+  }
+  public reject() {
+    /** Empty */
+  }
 
   public onResolve() {
     this.use = false;
@@ -51,12 +55,19 @@ export default class Alert extends Vue {
     this.reject();
   }
 
-
   public on(option: AlertOption) {
     this.option.positive = option.positive ? option.positive : '';
     this.option.negative = option.negative ? option.negative : '';
-    this.option.positiveAction = option.positiveAction ? option.positiveAction : () => { /** empty */ };
-    this.option.negativeAction = option.negativeAction ? option.negativeAction : () => { /** empty */ };
+    this.option.positiveAction = option.positiveAction
+      ? option.positiveAction
+      : () => {
+          /** empty */
+        };
+    this.option.negativeAction = option.negativeAction
+      ? option.negativeAction
+      : () => {
+          /** empty */
+        };
     this.option.title = option.title;
     this.option.message = option.message;
     this.use = true;

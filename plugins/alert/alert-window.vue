@@ -1,13 +1,31 @@
-<template lang="pug">
-  .alert-dialog(v-if='use')
+<template>
+  <div class="alert-dialog"
+       v-if="use">
+    <div class="window">
+      <div class="group">
+        <div class="title">{{option.title}}</div>
+        <div class="message"
+             v-html="option.message"></div>
+        <div class="under-line"></div>
+        <div class="button-group">
+          <div class="button positive"
+               v-if="!lodash.isEmpty(option.positive)"
+               @click="onResolve()">{{option.positive}}</div>
+          <div class="button negative"
+               v-if="!lodash.isEmpty(option.negative)"
+               @click="onReject()">{{option.negative}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- .alert-dialog(v-if='use')
     .window
       .group
         .title {{option.title}}
         .message(v-html="option.message")
         .button-group
-          .flex-empty
-          .button.negative(v-if="!$_.isEmpty(option.negative)" @click="onReject()") {{option.negative}}
-          .button.positive(v-if="!$_.isEmpty(option.positive)" @click="onResolve()") {{option.positive}}
+          .button.positive(v-if="!lodash.isEmpty(option.positive)" @click="onResolve()") {{option.positive}}
+          .button.negative(v-if="!lodash.isEmpty(option.negative) :style="{background: option.color}" @click="onReject()") {{option.negative}} -->
 </template>
 
 <script src='./alert-window.ts'/>
@@ -25,27 +43,26 @@
   align-items: center;
   justify-content: center;
   .window {
-    border-radius: 8px;
+    border-radius: 4px;
     width: 420px;
     background: #fff;
     .group {
       text-align: left;
       color: #333;
       .title {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         font-weight: 500;
-        font-size: 18px;
-        padding: 0 24px;
-        height: 52px;
+        font-size: 20px;
+        padding: 20px 24px;
+        height: 58px;
         line-height: 52px;
         overflow: hidden;
         text-overflow: ellipsis;
-        background: #00b0ff;
-        color: #fff;
+        background: #dddd;
+        color: #333;
       }
       .message {
-        font-weight: 500;
         color: #555;
         padding: 0 24px;
         font-size: 16px;
@@ -57,31 +74,35 @@
         }
       }
       .button-group {
+        border-top: 1px solid #ddd;
         display: flex;
         margin-top: 32px;
         padding: 4px 12px;
+        flex-direction: row-reverse;
         .button {
           height: 36px;
           line-height: 36px;
-          background: #eee;
-          border-radius: 18px;
-          margin: 8px;
+          border-radius: 4px;
+          margin: 4px;
           text-align: center;
           min-width: 100px;
           padding: 0 24px;
+          font-size: 16px;
           color: #fff;
-          font-weight: 700;
+          font-weight: 500;
           cursor: pointer;
           &.positive {
-            background: #00b0ff;
+            color: #42a5f5;
             &:hover {
-              background: #1e88e5;
+              color: #1e88e5;
+              background: #e1f5fe;
             }
           }
           &.negative {
-            background: #aaa;
+            color: #999;
             &:hover {
-              background: #999;
+              background: #eee;
+              color: #777;
             }
           }
         }

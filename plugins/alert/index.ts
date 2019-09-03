@@ -1,9 +1,6 @@
 import Vue from 'vue';
 import Alert, { AlertOption } from './alert-window';
 
-
-
-
 declare module 'vue/types/vue' {
   interface Alert extends Vue {
     on(option: AlertOption): void;
