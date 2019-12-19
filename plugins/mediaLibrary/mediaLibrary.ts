@@ -165,6 +165,7 @@ export default class MediaLibrary extends Vue {
 
   private uploadMedia() {
     const inputElement = document.createElement('INPUT');
+    inputElement.style.display = 'none';
     inputElement.setAttribute('type', 'file');
     inputElement.setAttribute('accept', '.gif, .jpg, .png, .pdf, .mp4');
     inputElement.setAttribute('multiple', '');
