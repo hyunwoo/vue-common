@@ -1,25 +1,21 @@
 <template>
-  <div class="loader"
-       v-if="use">
+  <div class="loader" v-if="use">
     <div class="window">
       <div class="group">
         <div style="text-align:center;">
-          <a-icon type="loading"
-                  style="font-size:48px; color:#E91E63"></a-icon>
+          <a-icon type="loading" style="font-size:48px; color:#E91E63"></a-icon>
         </div>
         <div class="separator"></div>
-        <div class="text bold"
-             v-html="message"></div>
+        <div class="text bold" v-html="message"></div>
       </div>
     </div>
   </div>
 </template>
 
-<script src="./spinnerDialog.ts"/>
+<script src="./spinnerDialog.ts" />
 
 <style scoped lang="scss">
 .loader {
-  min-width: 1328px;
   width: 100%;
   height: 100%;
   display: flex;

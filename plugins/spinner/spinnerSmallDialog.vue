@@ -1,32 +1,31 @@
-
 <template>
-  <v-dialog persistent=""
-            width=200
-            v-model="use">
-    <div class="elevation-0"
-         style="background:#fff; border-radius: 4px; padding: 18px;">
+  <v-dialog persistent="" width="200" v-model="use">
+    <div
+      class="elevation-0"
+      style="background:#fff; border-radius: 4px; padding: 18px;"
+    >
       <div style="text-align:center;">
-        <a-icon type="loading"
-                style="font-size:24px; color:#E91E63"></a-icon>
+        <a-icon type="loading" style="font-size:24px; color:#E91E63"></a-icon>
       </div>
-      <div style="overflow:hidden;
+      <div
+        style="overflow:hidden;
         word-break:break-all;
         padding-top: 14px;
         text-align:center;
         font-size: 12px;
         white-space:nowrap;
-        text-overflow:ellipsis;">
-        {{message}}
+        text-overflow:ellipsis;"
+      >
+        {{ message }}
       </div>
     </div>
   </v-dialog>
 </template>
 
-<script src="./spinnerSmallDialog.ts"/>
+<script src="./spinnerSmallDialog.ts" />
 
 <style scoped lang="scss">
 .loader {
-  min-width: 1328px;
   width: 100%;
   height: 100%;
   display: flex;

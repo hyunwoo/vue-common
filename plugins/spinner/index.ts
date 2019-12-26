@@ -1,7 +1,9 @@
 import Vue from 'vue';
-import SpinnerSimple from './spinnerSimple';
-import SpinnerDialog from './spinnerDialog';
-import SpinnerSmallDialog from './spinnerSmallDialog';
+// import SpinnerSimple from './spinnerSimple';
+import SpinnerDialogVue from './spinnerDialog.vue';
+import SpinnerSmallDialogVue from './spinnerSmallDialog.vue';
+
+import SpinnerSimpleVue from './spinnerSimple.vue';
 
 declare module 'vue/types/vue' {
   interface Vue {
@@ -21,9 +23,9 @@ export default {
       Vue.prototype.$spinnerDialog.destroy();
     }
 
-    const simpleProgressInstance = new SpinnerSimple();
-    const dialogProgressInstance = new SpinnerDialog();
-    const smallProgressInstance = new SpinnerSmallDialog();
+    const simpleProgressInstance = new SpinnerSimpleVue();
+    const dialogProgressInstance = new SpinnerDialogVue();
+    const smallProgressInstance = new SpinnerSmallDialogVue();
 
     simpleProgressInstance.$mount(document.body.appendChild(document.createElement('div')));
     dialogProgressInstance.$mount(document.body.appendChild(document.createElement('div')));

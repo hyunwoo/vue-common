@@ -1,24 +1,28 @@
 <template>
-  <div v-if='use'
-       class="loader">
-
+  <div v-if="use" class="loader">
     <div class="group">
       <div style="width:100%; text-align:center;">
-        <a-icon type="loading"
-                style="font-size:32px; color:#E91E63;"></a-icon>
+        <div class="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
-      <div class="py-3 sub-heading font-weight-medium"
-           style="max-width:500px;">{{message}}</div>
+      <div
+        style="max-width:500px; text-align:center;
+        font-weight:bold; padding:24px 18px 0; color : #555;"
+      >
+        {{ message }}
+      </div>
     </div>
   </div>
 </template>
 
-<script src="./spinnerSimple.ts"/>
-
+<script src="./spinnerSimple.ts" />
 
 <style scoped lang="scss">
 .loader {
-  min-width: 1328px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -35,6 +39,41 @@
       margin-top: 14px;
       color: #777;
     }
+  }
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #aaa;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #aaa transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>
